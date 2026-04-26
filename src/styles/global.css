@@ -15,6 +15,16 @@
   --radius-lg: 24px;
   --radius-md: 18px;
   --radius-sm: 14px;
+  --viewport-width: 100vw;
+  --container-gutter: 16px;
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+@supports (width: 100dvw) {
+  :root {
+    --viewport-width: 100dvw;
+  }
 }
 
 * {
@@ -47,18 +57,25 @@ a {
 }
 
 .app-shell {
-  overflow-x: hidden;
+  overflow-x: clip;
+  padding-left: var(--safe-left);
+  padding-right: var(--safe-right);
 }
 
 .container {
-  width: min(calc(100% - 32px), var(--container));
+  width: min(calc(var(--viewport-width) - (var(--container-gutter) * 2) - var(--safe-left) - var(--safe-right)), var(--container));
   margin: 0 auto;
 }
 
 .page-stack {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 18px;
   padding-bottom: 34px;
+}
+
+.page-stack > * {
+  min-width: 0;
 }
 
 .card {
@@ -92,6 +109,11 @@ a {
   margin-bottom: 16px;
 }
 
+.section-head > div,
+.section-head > span {
+  min-width: 0;
+}
+
 .muted-small {
   color: var(--muted);
   font-size: 0.88rem;
@@ -112,6 +134,7 @@ a {
   font-size: 0.84rem;
   background: rgba(191, 122, 52, 0.12);
   color: #94511e;
+  max-width: 100%;
 }
 
 .hero {
@@ -343,6 +366,24 @@ a {
   color: var(--muted);
 }
 
+.section-title,
+.section-subtitle,
+.overview-card strong,
+.budget-card strong,
+.story-card p,
+.timeline-item p,
+.lodging-card p,
+.meal-card li,
+.packing-card li,
+.reminder-card p,
+.provider-pill,
+.chip,
+.legend-item span:last-child,
+.route-btn {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 .bullet-list {
   margin: 0;
   padding-left: 18px;
@@ -489,6 +530,7 @@ tbody tr:last-child td {
   font: inherit;
   cursor: pointer;
   transition: transform 0.18s ease;
+  min-width: 0;
 }
 
 .route-btn.is-active {
@@ -503,6 +545,10 @@ tbody tr:last-child td {
 .legend-list {
   display: grid;
   gap: 10px;
+}
+
+.legend-list > * {
+  min-width: 0;
 }
 
 .legend-item {
@@ -621,8 +667,8 @@ tbody tr:last-child td {
 }
 
 @media (max-width: 900px) {
-  .container {
-    width: min(calc(100% - 20px), var(--container));
+  :root {
+    --container-gutter: 10px;
   }
 
   .page-stack {
@@ -827,8 +873,8 @@ tbody tr:last-child td {
 }
 
 @media (max-width: 560px) {
-  .container {
-    width: calc(100% - 16px);
+  :root {
+    --container-gutter: 8px;
   }
 
   .hero-panel,
@@ -933,6 +979,31 @@ tbody tr:last-child td {
 
   #trip-map {
     min-height: 360px;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 540px) {
+  :root {
+    --container-gutter: 8px;
+  }
+
+  .page-stack {
+    gap: 12px;
+  }
+
+  .hero-panel,
+  .section {
+    padding: 16px;
+  }
+
+  .section-head {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .provider-pill,
+  .chip {
+    align-self: flex-start;
   }
 }
 
