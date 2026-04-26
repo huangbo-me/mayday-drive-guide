@@ -620,7 +620,7 @@ tbody tr:last-child td {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .container {
     width: min(calc(100% - 20px), var(--container));
   }
@@ -826,7 +826,7 @@ tbody tr:last-child td {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 560px) {
   .container {
     width: calc(100% - 16px);
   }
@@ -888,6 +888,43 @@ tbody tr:last-child td {
   .timeline-header {
     flex-wrap: wrap;
     gap: 8px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.65rem, 9vw, 2.2rem);
+  }
+
+  .hero-subtitle {
+    font-size: 0.92rem;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .timeline-card h3,
+  .lodging-card h3 {
+    font-size: 0.96rem;
+  }
+
+  .timeline-item strong,
+  .meal-head strong,
+  .packing-card strong,
+  .reminder-card strong {
+    font-size: 0.95rem;
+  }
+
+  .timeline-item p,
+  .lodging-card p,
+  .meal-card li,
+  .packing-card li,
+  .reminder-card p {
+    font-size: 0.9rem;
+    line-height: 1.55;
   }
 
   .bullet-list {
