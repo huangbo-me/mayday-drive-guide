@@ -155,6 +155,7 @@ a {
 .hero-visual {
   position: relative;
   z-index: 1;
+  min-width: 0;
 }
 
 .hero-eyebrow {
@@ -402,6 +403,7 @@ a {
 .timeline-item span {
   color: var(--green);
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .timeline-item strong {
@@ -508,6 +510,7 @@ tbody tr:last-child td {
   align-items: center;
   gap: 10px;
   color: var(--muted);
+  min-width: 0;
 }
 
 .legend-line {
@@ -622,6 +625,15 @@ tbody tr:last-child td {
     width: min(calc(100% - 20px), var(--container));
   }
 
+  .page-stack {
+    gap: 14px;
+    padding-bottom: 24px;
+  }
+
+  .hero {
+    padding: 14px 0 10px;
+  }
+
   .hero-panel,
   .card {
     border-radius: 24px;
@@ -632,10 +644,42 @@ tbody tr:last-child td {
     padding: 20px;
   }
 
+  .hero-panel {
+    gap: 18px;
+  }
+
+  .hero-panel::before {
+    width: 220px;
+    height: 220px;
+    right: -90px;
+    top: -70px;
+  }
+
+  .hero-panel::after {
+    width: 180px;
+    height: 180px;
+    left: -70px;
+    bottom: -90px;
+  }
+
+  .hero-title {
+    margin: 14px 0 10px;
+    font-size: clamp(1.8rem, 8vw, 2.6rem);
+    line-height: 1.12;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    padding: 7px 12px;
+  }
+
   .hero-actions,
   .hero-tags,
   .route-controls,
-  .switcher-meta,
   .section-head {
     flex-direction: column;
   }
@@ -651,9 +695,207 @@ tbody tr:last-child td {
     grid-template-columns: 1fr;
   }
 
+  .metric-card,
+  .overview-card,
+  .story-card,
+  .timeline-card,
+  .lodging-card,
+  .meal-card,
+  .packing-card,
+  .reminder-card,
+  .budget-card,
+  .map-panel {
+    padding: 16px;
+  }
+
+  .section-title {
+    font-size: 1.18rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.92rem;
+  }
+
+  .provider-pill,
+  .chip {
+    align-self: flex-start;
+  }
+
+  .overview-grid {
+    gap: 12px;
+  }
+
+  .overview-card strong,
+  .budget-card strong {
+    font-size: 1rem;
+  }
+
+  .timeline-card h3,
+  .lodging-card h3 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding-top: 10px;
+  }
+
+  .timeline-item span {
+    display: inline-flex;
+    width: fit-content;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(32, 86, 70, 0.08);
+    font-size: 0.86rem;
+  }
+
+  .table-shell {
+    margin-top: 2px;
+  }
+
+  table {
+    min-width: 760px;
+  }
+
+  thead th,
+  tbody td {
+    padding: 12px 14px;
+    font-size: 0.92rem;
+  }
+
+  .day-pill {
+    min-width: 58px;
+    font-size: 0.8rem;
+  }
+
+  .lodging-card p,
+  .story-card p,
+  .reminder-card p,
+  .popup-text {
+    font-size: 0.92rem;
+  }
+
+  .meal-head {
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+
+  .map-layout {
+    gap: 12px;
+  }
+
+  .map-sidebar {
+    gap: 12px;
+  }
+
+  .route-controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .route-btn.route-btn-all {
+    grid-column: 1 / -1;
+  }
+
+  .legend-item {
+    align-items: flex-start;
+  }
+
+  .legend-item span:last-child {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
   #trip-map {
     min-height: 420px;
     border-radius: 20px;
+  }
+
+  .leaflet-popup-content {
+    min-width: 0;
+    width: min(220px, calc(100vw - 96px));
+  }
+
+  .footer-note {
+    padding: 0 0 24px;
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: calc(100% - 16px);
+  }
+
+  .hero-panel,
+  .section {
+    padding: 16px;
+  }
+
+  .hero-panel,
+  .card,
+  #trip-map {
+    border-radius: 18px;
+  }
+
+  .hero-tags {
+    gap: 8px;
+  }
+
+  .tag {
+    width: 100%;
+    justify-content: center;
+    padding: 9px 12px;
+    font-size: 0.88rem;
+  }
+
+  .btn,
+  .tiny-link {
+    padding: 11px 14px;
+    font-size: 0.94rem;
+  }
+
+  .section-head {
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .overview-card,
+  .story-card,
+  .timeline-card,
+  .lodging-card,
+  .meal-card,
+  .packing-card,
+  .reminder-card,
+  .budget-card,
+  .map-panel,
+  .metric-card {
+    padding: 14px;
+  }
+
+  .route-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .route-btn.route-btn-all {
+    grid-column: auto;
+  }
+
+  .timeline-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .bullet-list {
+    padding-left: 16px;
+  }
+
+  #trip-map {
+    min-height: 360px;
   }
 }
 
